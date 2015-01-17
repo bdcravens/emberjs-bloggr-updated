@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Ember Starter Kit</title>
+  <!-- <link rel="stylesheet" href="css/normalize.css"> -->
+  <link rel="stylesheet" href="css/style.css">
+  <link href="./bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <script type="text/x-handlebars">
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Bloggr</a>
+          <ul class="nav navbar-nav">
+            <li>{{#link-to 'posts'}}Posts{{/link-to}}</li>
+            <li>{{#link-to 'about'}}About{{/link-to}}</li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      {{outlet}}
+    </div>
+
+  </script>
+
+  <script type="text/x-handlebars" id="about">
+    <div class="about">
+      first bit of about text....
+    </div>
+    <div class="about">
+      second about text ....
+    </div>
+  </script>
+
+  <script type="text/x-handlebars" id="posts">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-3">
+          <table class="table">
+            <thead>
+              <tr><th>Recent Posts</th></tr>
+            </thead>
+            {{#each}}
+              <tr>
+                <td>
+                  {{#link-to 'post' this}}
+                    {{{title}}} <small class="muted">by {{author.name}}</small>
+                  {{/link-to}}
+                </td>
+              </tr>
+            {{/each}}
+          </table>
+        </div>
+        <div class="col-md-9">
+          {{outlet}}
+        </div>
+      </div>
+    </div>
+  </script>
+
+
+  <script type="text/x-handlebars" id="post">
+    {{#if isEditing}}
+      {{partial 'post/edit'}}
+      <button {{action 'doneEditing'}}>Done</button>
+    {{else}}
+      <button {{action 'edit'}}>Edit</button>
+    {{/if}}
+
+    <h1>{{{title}}}</h1>
+    <h2>by {{author.name}} <small class="multed">({{format-date date}})</small></h2>
+    <hr>
+    <div class="intro">{{format-markdown excerpt}}</div>
+    <div class="below-the-fold">{{format-markdown body}}</div>
+  </script>
+
+  <script type="text/x-handlebars" id="post/_edit">
+    <p>{{input type="text" value=title}}</p>
+    <p>{{input type="text" value=excerpt}}</p>
+    <p>{{textarea value=body}}</p>
+  </script>
+
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/handlebars/handlebars.min.js"></script>
+  <script src="bower_components/ember/ember.min.js"></script>
+  <script src="bower_components/showdown/compressed/Showdown.min.js"></script>
+  <script src="bower_components/moment/min/moment.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

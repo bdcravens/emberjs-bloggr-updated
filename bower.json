@@ -1,0 +1,21 @@
+{
+  "name": "emberjs Bloggr example",
+  "version": "0.0.1",
+  "authors": [
+    "Billy Cravens <bdcravens@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ember": "~1.9.1",
+    "showdown": "~0.3.4",
+    "moment": "~2.9.0",
+    "bootstrap": "~3.3.1"
+  }
+}
