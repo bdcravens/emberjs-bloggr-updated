@@ -15,6 +15,10 @@ Along the way I made changes:
 * use Bower to pull in Ember and other dependencies
 * use latest version of Bootstrap (as pulled in by Bower) and updated HTML accordingly
 
+I didn't try to update this to use Ember CLI or any syntax changes, I just
+makde minor adjustments to at least make it render correctly as shown in the
+video :-)
+
 # To run this
 * clone repo
 * ```bower install``` (assuming you've [installed Bower](http://bower.io/#install-bower))
